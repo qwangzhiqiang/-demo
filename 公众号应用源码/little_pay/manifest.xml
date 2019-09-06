@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns="http://www.we7.cc" versionCode="">
+	<application setting="false">
+		<name><![CDATA[微课程]]></name>
+		<identifie><![CDATA[little_pay]]></identifie>
+		<version><![CDATA[1.0]]></version>
+		<type><![CDATA[biz]]></type>
+		<ability><![CDATA[微课程]]></ability>
+		<description><![CDATA[微课程]]></description>
+		<author><![CDATA[bendilaosiji]]></author>
+		<url><![CDATA[http://minbang.bendilaosiji.com/]]></url>
+	</application>
+	<platform>
+		<subscribes>
+		</subscribes>
+		<handles>
+			<message type="text" />
+			<message type="image" />
+			<message type="voice" />
+			<message type="video" />
+			<message type="shortvideo" />
+			<message type="location" />
+			<message type="link" />
+			<message type="subscribe" />
+			<message type="qr" />
+			<message type="trace" />
+			<message type="click" />
+		</handles>
+		<rule embed="false" />
+		<card embed="false" />
+		<supports>
+			<item type="app" />
+		</supports>
+	</platform>
+	<bindings>
+		<cover>
+			<entry title="微课程首页" do="index" state="" direct="false" />
+		</cover>
+		<menu>
+			<entry title="课程管理" do="courses" state="" direct="false" />
+			<entry title="分类管理" do="categorys" state="" direct="false" />
+			<entry title="订单管理" do="orders" state="" direct="false" />
+			<entry title="用户管理" do="users" state="" direct="false" />
+		</menu>
+	</bindings>
+	<permissions>
+	</permissions>
+	<install><![CDATA[
+	CREATE TABLE `ims_little_pay_users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '//用户自增id',
+  `openid` varchar(64) NOT NULL DEFAULT '' COMMENT '//用户openid',
+  
+  PRIMARY KEY (`id`,`openid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='//砸金蛋用户表';
+	
+	]]></install>
+	<uninstall><![CDATA[
+	DROP TABLE IF EXISTS `ims_little_pay_users`;
+	]]></uninstall>
+	<upgrade><![CDATA[]]></upgrade>
+</manifest>

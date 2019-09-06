@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS `ims_pig_joke_article` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '//笑话表自动编号',
+  `title` varchar(64) DEFAULT '' COMMENT '//笑话标题',
+  `content` varchar(255) DEFAULT '' COMMENT '//笑话内容',
+  `createtime` varchar(16) DEFAULT '' COMMENT '//添加时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='//小猪笑话小程序信息表' AUTO_INCREMENT=1 ;

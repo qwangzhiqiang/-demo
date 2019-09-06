@@ -1,0 +1,27 @@
+{template 'common/header'}
+<table class="table">
+  <caption>用户信息</caption>
+  <thead>
+    <tr>
+      <th>用户昵称</th>
+      <th>头像</th>
+	  <th>性别</th>
+    </tr>
+  </thead>
+  <tbody>
+	{loop $users $row}
+    <tr>
+      <td>{$row['nickname']}</td>
+      <td><img style="width:30px;height:30px" src="{$row['headingimg']}"></td>
+	  <td>
+	  {if $row['sex']==1}男{else if $row['sex']==2}女{else}未知{/if}
+	  
+	  
+	  </td>
+    </tr>
+    {/loop}
+  </tbody>
+</table>
+
+
+{template 'common/footer'}

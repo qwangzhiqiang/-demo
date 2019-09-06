@@ -1,0 +1,38 @@
+{template 'common/header'}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            分类管理
+        </h3>
+    </div>
+    <div class="panel-body">
+        
+      
+      <table class="table table-bordered">
+  <caption><a href="{php echo $this->createWebUrl('addcategory');}">添加分类</a></caption>
+  <thead>
+    <tr>
+      <th>编号</th>
+      <th>分类名</th>
+    	<th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    {loop $categorys $index $row}
+    {php $paixu=$index+1;}
+    <tr>
+      <td>{$paixu}</td>
+      <td>{$row['name']}</td>
+      <td><a href="{php echo $this->createWebUrl('categorys');}&action=del&cid={$row['id']}"  class="btn btn-danger">删除</a> <a href="{php echo $this->createWebUrl('updatecategory');}&cid={$row['id']}" class="btn btn-info">修改</a></td>
+    </tr>
+    {/loop}
+  </tbody>
+</table>
+      
+      
+    </div>
+</div>
+
+{template 'common/footer'}

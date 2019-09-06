@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns="http://www.we7.cc" versionCode="">
+	<application setting="true">
+		<name><![CDATA[现场签到红包]]></name>
+		<identifie><![CDATA[qian_dao]]></identifie>
+		<version><![CDATA[1.0]]></version>
+		<type><![CDATA[enterprise]]></type>
+		<ability><![CDATA[活动现场签到抽红包]]></ability>
+		<description><![CDATA[活动现场签到抽红包]]></description>
+		<author><![CDATA[hyl666666]]></author>
+		<url><![CDATA[]]></url>
+	</application>
+	<platform>
+		<subscribes>
+		</subscribes>
+		<handles>
+		</handles>
+		<rule embed="false" />
+		<card embed="false" />
+		<supports>
+			<item type="app" />
+		</supports>
+	</platform>
+	<bindings>
+		<cover>
+			<entry title="签到首页入口" do="index" state="" direct="false" />
+		</cover>
+		<menu>
+			<entry title="活动设置" do="setup" state="" direct="false" />
+			<entry title="参与人员" do="user" state="" direct="false" />
+		</menu>
+	</bindings>
+	<permissions>
+	</permissions>
+	<install><![CDATA[]]>DROP TABLE IF EXISTS `ims_qian_dao_setup`;
+CREATE TABLE `ims_qian_dao_setup` (
+  `setupid` int(11) NOT NULL AUTO_INCREMENT,
+  `max` int(11) DEFAULT NULL,
+  `min` int(11) DEFAULT NULL,
+  `bgimg` varchar(255) DEFAULT NULL,
+  `uniacid` int(11) DEFAULT NULL,
+  `start` varchar(32) DEFAULT NULL,
+  `end` varchar(32) DEFAULT NULL,
+  `title` varchar(128) DEFAULT NULL,
+  `total` int(11) DEFAULT NULL,
+  `hasgrant` int(11) DEFAULT '0',
+  PRIMARY KEY (`setupid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;DROP TABLE IF EXISTS `ims_qian_dao_user`;
+CREATE TABLE `ims_qian_dao_user` (
+  `userid` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(16) DEFAULT NULL,
+  `tel` varchar(16) DEFAULT NULL,
+  `openid` varchar(128) DEFAULT NULL,
+  `uniacid` int(11) DEFAULT NULL,
+  `bonus` double DEFAULT NULL,
+  PRIMARY KEY (`userid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;</install>
+	<uninstall><![CDATA[]]></uninstall>
+	<upgrade><![CDATA[]]></upgrade>
+</manifest>

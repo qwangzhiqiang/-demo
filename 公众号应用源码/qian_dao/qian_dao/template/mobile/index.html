@@ -1,0 +1,149 @@
+{template 'common/header'}
+<style>
+.header{
+	padding: 50px 20px 0;
+}
+.header h3{
+	text-align: center;
+	color: #ffffff;
+}
+.headerimg{
+	padding: 20px;
+	text-align: center;
+}
+.headerimg img{
+	width: 80px;
+	height: 80px;
+}
+.main{
+	padding: 30px;
+}
+
+.success{
+	width: 100%;
+	text-align: center;	
+}
+.success div{
+	height: 150px;
+    width: 180px;
+    display: inline-block;
+    position: relative;
+}
+.success div img{
+	height: 150px;
+    width: 180px;
+	display: block;
+}
+.success div h3{
+	position: absolute;
+	bottom: 9px;
+	left: 56px;
+	color: #ffffff;
+	z-index: 101;
+}
+.success-box{
+	padding: 30px 60px;
+	position: fixed;
+	top: 100px;
+	z-index: 10000;
+	width: 100%;
+	text-align: center;
+}
+.success-box .modal-dialog{
+
+}
+</style>
+<div class="mui-content" style="background-image: url(../attachment/{$setup['bgimg']});">
+	<div class="header">
+		<h3>欢迎参加</h3>
+		<h3>{$setup['title']}</h3>
+	</div>
+	<div class="headerimg">
+		<img src="{$userinfo['headimgurl']}" alt="" class="img-circle">
+	</div>
+	<div class="main">
+		
+		  <div class="form-group">
+		  	<div class="input-group">
+		      <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+		      <input type="text" class="form-control" id="exampleInputAmount" placeholder="请输入您的姓名">
+		      
+		    </div>
+		  </div>
+		  <div class="form-group">
+		  	<div class="input-group">
+		      <div class="input-group-addon"><span class="glyphicon glyphicon-earphone"></span></div>
+		      <input type="tel" class="form-control" id="exampleInputAmount" placeholder="请输入您的电话号码">
+		     
+		    </div>
+		    
+		  </div>
+		  
+		  <a  class="btn btn-warning btn-lg btn-block btn-do" >我要抽红包</a>
+		
+	</div>
+</div>
+<div class="success-box" style="display: none">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				
+				<h4 class="modal-title" id="myModalLabel">
+					恭喜你
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div class="success">
+					<div>
+						<img src="/addons/qian_dao/template/image/hb.png" alt="" class="">
+						<h3 class="bonus">2.00元</h3>
+					</div>
+					
+				</div>
+				<div>红包已发送至零钱，请查收</div>
+			</div>
+			<div class="modal-footer">
+                <button type="button" class="btn btn-warning btn-lg btn-block" >关  闭</button>
+                
+            </div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+{template 'common/footer'}
+<script>
+$(function(){
+	$('.btn-do').click(function(){
+		var username=$("input[type='text']").val();
+		var tel=$("input[type='tel']").val();
+		if(username==''){
+			mui.alert('姓名不能为空');
+
+		}else if(!(/^1[3|4|5|7|8][0-9]{9}$/.test(tel))){
+			mui.alert('手机号码错误');
+
+		}else{
+			$.get("{php echo $this->createMobileUrl('success');}&username="+username+'&tel='+tel,function(data){
+				var data=$.parseJSON(data);
+				if(data.status=='hassuccess'){
+					mui.alert('你已经参加过了,请下次参加');
+				}else if(data.status=='noweixin'){
+					mui.alert('请在微信参加本次活动');
+				}else if(data.status=='outtime'){
+					mui.alert('活动时间未开始或已结束');
+				}else if(data.status=='nomon'){
+					mui.alert('红包已经抢完了！');
+				}else if(data.status=='success'){
+					$('.bonus').html(data.bonus.toFixed(2)+'元');
+					$('.main').hide();
+					$('.success-box').show();
+				}
+			});
+			
+		}
+		
+	});
+	$('.success-box').click(function(){
+		$('.success-box').hide();
+	});
+});
+</script>

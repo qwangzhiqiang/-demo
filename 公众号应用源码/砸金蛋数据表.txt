@@ -1,0 +1,37 @@
+CREATE TABLE IF NOT EXISTS `ims_gold_eggs_configs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '//配置表自动编号',
+  `title` varchar(64) DEFAULT '' COMMENT '//活动标题',
+  `backimg` varchar(255) DEFAULT '' COMMENT '//背景图片',
+  `topimg` varchar(255) DEFAULT '' COMMENT '//顶部图片',
+  `middleimg` varchar(255) DEFAULT '' COMMENT '//中间图片',
+  `bottomimg` varchar(255) DEFAULT '' COMMENT '//底部图片',
+  `codeimg` varchar(255) DEFAULT '' COMMENT '//微信二维码',
+  `gongzhonghao` varchar(64) DEFAULT '' COMMENT '//公众号账号',
+  `totalamount` int(11) DEFAULT NULL COMMENT '//红包总金额',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='//砸金蛋配置项表' AUTO_INCREMENT=1 ;
+
+
+CREATE TABLE IF NOT EXISTS `ims_gold_eggs_orders` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '//订单自增id',
+  `partner_trade_no` varchar(64) DEFAULT '' COMMENT '//商户单号',
+  `payment_no` varchar(64) DEFAULT '' COMMENT '//微信单号',
+  `price` int(11) DEFAULT NULL COMMENT '//金额',
+  `status` int(11) DEFAULT NULL COMMENT '//订单状态',
+  `error` varchar(128) DEFAULT '' COMMENT '//错误信息',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='//砸金蛋订单表' AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `ims_gold_eggs_users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '//用户自增id',
+  `openid` varchar(64) NOT NULL DEFAULT '' COMMENT '//用户openid',
+  `nickname` varchar(64) DEFAULT '' COMMENT '//用户昵称',
+  `headingimg` varchar(255) DEFAULT '' COMMENT '//用户头像',
+  `tel` varchar(16) DEFAULT '' COMMENT '//手机号码',
+  `sex` varchar(2) DEFAULT '' COMMENT '//性别',
+  `country` varchar(16) DEFAULT '' COMMENT '//国家',
+  `province` varchar(16) DEFAULT '' COMMENT '//身份',
+  `city` varchar(32) DEFAULT '' COMMENT '//城市',
+  `regtime` varchar(16) DEFAULT '' COMMENT '//授权时间',
+  PRIMARY KEY (`id`,`openid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='//砸金蛋用户表' AUTO_INCREMENT=1 ;

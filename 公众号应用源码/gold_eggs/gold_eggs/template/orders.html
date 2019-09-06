@@ -1,0 +1,33 @@
+{template 'common/header'}
+<table class="table">
+  <caption>订单新信息</caption>
+  <thead>
+    <tr>
+      <th>序号</th>
+      <th>商户单号</th>
+	  <th>微信单号</th>
+	  <th>金额</th>
+      <th>状态</th>
+	  <th>错误信息</th>
+    </tr>
+  </thead>
+  <tbody>
+	{loop $orderdata  $row}
+    <tr>
+      <td>{$row['id']}</td>
+	  <td>{$row['partner_trade_no']}</td>
+	  <td>{$row['payment_no']}</td>
+	  <td>{$row['price']}</td>
+	  <td>
+	  {if $row['status']==1}支付成功{else}支付失败{/if}
+	  
+	  </td>
+	  <td>{$row['error']}</td>
+     
+    </tr>
+    {/loop}
+  </tbody>
+</table>
+{$pager}
+
+{template 'common/footer'}

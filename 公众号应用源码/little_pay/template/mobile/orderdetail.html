@@ -1,0 +1,213 @@
+{template 'common/header'}
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>订单详情 - 惠生活超市</title>
+    <meta name="description" content="惠生活超市">
+    <meta name="keywords" content="惠生活超市">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+   
+    <!-- head 中 -->
+    <link rel="stylesheet" href="{php echo MODULE_URL;}template/mobile/css/weui.min.css">
+    <link rel="stylesheet" href="{php echo MODULE_URL;}template/mobile/css/jquery-weui.min.css">
+    <link rel="stylesheet" href="{php echo MODULE_URL;}template/mobile/css/jquery.mmenu.all.css">
+    <link rel="stylesheet" href="{php echo MODULE_URL;}template/mobile/css/common.css">
+
+    <!-- body 最后 -->
+    <script src="{php echo MODULE_URL;}template/mobile/js/jquery.min.js"></script>
+    <script src="{php echo MODULE_URL;}template/mobile/js/jquery-weui.min.js"></script>
+
+    <!-- 如果使用了某些拓展插件还需要额外的JS -->
+    <script src="{php echo MODULE_URL;}template/mobile/js/swiper.min.js"></script>
+    <script src="{php echo MODULE_URL;}template/mobile/js/city-picker.min.js"></script>
+
+    <script src="{php echo MODULE_URL;}template/mobile/js/jquery.lazyload.min.js"></script>
+    <script src="{php echo MODULE_URL;}template/mobile/js/jquery.goup.min.js"></script>
+    <script src="{php echo MODULE_URL;}template/mobile/js/jquery.mmenu.all.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('nav#catmenu').mmenu({
+                extensions	: [ 'fx-menu-slide', 'shadow-page', 'shadow-panels', 'listview-large', 'pagedim-white' ],
+                iconPanels	: true,
+                counters	: true,
+                keyboardNavigation : {
+                    enable	: true,
+                    enhance	: true
+                },
+                searchfield : {
+                    placeholder	: 'Search menu items'
+                },
+                navbar : {
+                    title : '惠生活'
+                },
+                navbars	: [
+                    {
+                        position	: 'top',
+                        content		: [ 'searchfield' ]
+                    }, {
+                        position	: 'top',
+                        content		: [ 'breadcrumbs', 'close' ]
+                    }, {
+                        position	: 'bottom',
+                        content		: [ '<a href="http://www.9gwq.com" target="_blank">九阁网趣</a>' ]
+                    }
+                ]
+            }, {
+                searchfield : {
+                    clear : true
+                }
+            });
+        });
+        $(document).ready(function () {
+            $.goup({
+                trigger: 100,
+                bottomOffset: 50,
+                locationOffset: parseInt(($(window).width()-100)/2),
+                title: '',
+                titleAsText: false,
+                hideUnderWidth: 100,
+                containerColor:"#09bb07"
+            });
+        });
+    </script>
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d0607ae78cb23d45522f94cb42780f69";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+
+
+    $(function(){
+            });
+    </script>
+
+</head>
+<body>
+<a id="catmenu_btn" href="#catmenu"><span><img src="img/catmenu.png" /></span></a>
+<nav id="catmenu">
+    <ul>
+        <li><a href="/">首页</a></li>
+        <li><span>产品分类</span>
+            <ul>
+                                <li><a href="?_suXCA=index/index&cid=5">居家生活</a></li>
+                                <li><a href="?_suXCA=index/index&cid=6">食品饮料</a></li>
+                                <li><a href="?_suXCA=index/index&cid=11">母婴用品</a></li>
+                                <li><a href="?_suXCA=index/index&cid=12">儿童玩具</a></li>
+                                <li><a href="?_suXCA=index/index&cid=13">文具/体育</a></li>
+                                <li><a href="?_suXCA=index/index&cid=18">虚拟物品</a></li>
+                                <li><a href="?_suXCA=index/index&cid=19">3C数码</a></li>
+                                <li><a href="?_suXCA=index/index&cid=20">成人用品</a></li>
+                            </ul>
+        </li>
+        <li><a href="/?_suXCA=index/query">订单查询</a></li>
+        <li><a href="/?_suXCA=user/index">会员中心</a></li>
+        <li><span>关于我们</span>
+            <ul>
+                <li><a href="/?_suXCA=index/about">平台说明</a></li>
+                <li><a href="/?_suXCA=index/feedback">咨询反馈</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+    <div class="demos-header" style="padding:15px 0;background:url('img/osearch.png') #eee center center;background-size: cover;">
+      <h1 class="demos-title" style="color:#fff;text-shadow: 2px 1px 2px #333;">订单详情</h1>
+    </div>
+
+<div class="weui-form-preview">
+  <div class="weui-form-preview__hd">
+    <label class="weui-form-preview__label">订单信息</label>
+    <em class="weui-form-preview__value">待付款</em>
+  </div>
+  <div class="weui-form-preview__bd">
+    <div class="weui-form-preview__item">
+      <label class="weui-form-preview__label">订单号</label>
+      <span class="weui-form-preview__value">{$order['ordernum']}</span>
+    </div>
+      <div class="weui-form-preview__item">
+          <label class="weui-form-preview__label">订单金额</label>
+          <span class="weui-form-preview__value">{$order['price']}元</span>
+      </div>
+    <div class="weui-form-preview__item">
+      <label class="weui-form-preview__label">下单时间</label>
+      <span class="weui-form-preview__value">{php echo date("Y-m-d H:i",$order['createtime']); }</span>
+    </div>
+    <div class="weui-form-preview__item">
+      <label class="weui-form-preview__label">商品</label>
+      <span class="weui-form-preview__value">{$course['title']}</span>
+    </div>
+
+
+</div>
+  <div class="weui-msg__opr-area">
+    <p class="weui-btn-area">
+           <button type="button" class="mui-btn mui-btn-block mui-disabled js-wechat-pay">微信支付（加载中）</button>
+          <a href="?_suXCA=index/index" class="weui-btn weui-btn_default">继续购物</a>
+    </p>
+  </div>
+
+
+</body>
+</html>
+  
+
+
+<script type="text/javascript">
+//发起微信支付，微信支付依赖于 WeixinJSBridge 组件，所以发起时应该在ready事件中进行
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+    $('.js-wechat-pay').removeClass('mui-disabled');
+    $('.js-wechat-pay').click(function(){
+        //先通过AJAX获取最新的订单号
+        $.getJSON("{php echo $this->createMobileUrl('topay');}&ordernum={$order['ordernum']}", function(data, status){
+            if(status == 'success'){
+                util.pay({
+                    orderFee : data.data.fee,
+                    payMethod : 'wechat',
+                    orderTitle : '充值' + data.data.fee + '元',
+                    orderTid : data.data.ordertid,  //fail:这个订单已经支付成功,不需要重复支付 
+                    module : 'little_pay', //验证结果请求的模块路径   
+                    success : function(result) {
+                        alert('支付成功');
+                    },
+                    fail : function(result) {
+                        alert('fail : ' + result.message);
+                    },
+                    complete : function(result) {
+                        location.reload();
+                    }
+                });
+            }
+        });
+    });
+    $('.js-wechat-pay').html('微信支付');
+});
+//百度钱包和其它支付则无浏览器组件要求，可直接使用
+function dopayBaidu() {
+        util.pay({
+            orderFee : 0.01,
+            payMethod : 'baifubao',
+            orderTitle : '充值10元',
+            orderTid : 1234567104,
+            module : 'recharge',
+            success : function(res) {
+                alert('支付成功');
+            },
+            fail : function(result) {
+                alert('fail : ' + result.message);
+            },
+            complete : function(result) {
+                alert('complete : ' + result.message);
+            }
+        });
+}
+</script>
+
+
+  
+  {template 'common/footer'}

@@ -1,0 +1,12 @@
+
+
+≈‰÷√±Ì
+
+id
+title
+topimg
+middleimg
+bottomimg
+totalamount
+minimumamount
+winpercent

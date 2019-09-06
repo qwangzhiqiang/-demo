@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>惠生活超市</title>
+    <meta name="description" content="惠生活超市">
+    <meta name="keywords" content="惠生活超市">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- head 中 -->
+    <link rel="stylesheet" href="{php echo MODULE_URL;}template/mobile/css/weui.min.css">
+    <link rel="stylesheet" href="{php echo MODULE_URL;}template/mobile/css/jquery-weui.min.css">
+    <link rel="stylesheet" href="{php echo MODULE_URL;}template/mobile/css/jquery.mmenu.all.css">
+    <link rel="stylesheet" href="{php echo MODULE_URL;}template/mobile/css/common.css">
+
+    <!-- body 最后 -->
+    <script src="{php echo MODULE_URL;}template/mobile/js/jquery.min.js"></script>
+    <script src="{php echo MODULE_URL;}template/mobile/js/jquery-weui.min.js"></script>
+
+    <!-- 如果使用了某些拓展插件还需要额外的JS -->
+    <script src="{php echo MODULE_URL;}template/mobile/js/swiper.min.js"></script>
+    <script src="{php echo MODULE_URL;}template/mobile/js/city-picker.min.js"></script>
+
+    <script src="{php echo MODULE_URL;}template/mobile/js/jquery.lazyload.min.js"></script>
+    <script src="{php echo MODULE_URL;}template/mobile/js/jquery.goup.min.js"></script>
+    <script src="{php echo MODULE_URL;}template/mobile/js/jquery.mmenu.all.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('nav#catmenu').mmenu({
+                extensions	: [ 'fx-menu-slide', 'shadow-page', 'shadow-panels', 'listview-large', 'pagedim-white' ],
+                iconPanels	: true,
+                counters	: true,
+                keyboardNavigation : {
+                    enable	: true,
+                    enhance	: true
+                },
+                searchfield : {
+                    placeholder	: 'Search menu items'
+                },
+                navbar : {
+                    title : '惠生活'
+                },
+                navbars	: [
+                    {
+                        position	: 'top',
+                        content		: [ 'searchfield' ]
+                    }, {
+                        position	: 'top',
+                        content		: [ 'breadcrumbs', 'close' ]
+                    }, {
+                        position	: 'bottom',
+                        content		: [ '<a href="http://www.9gwq.com" target="_blank">九阁网趣</a>' ]
+                    }
+                ]
+            }, {
+                searchfield : {
+                    clear : true
+                }
+            });
+        });
+        $(document).ready(function () {
+            $.goup({
+                trigger: 100,
+                bottomOffset: 50,
+                locationOffset: parseInt(($(window).width()-100)/2),
+                title: '',
+                titleAsText: false,
+                hideUnderWidth: 100,
+                containerColor:"#09bb07"
+            });
+        });
+    </script>
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d0607ae78cb23d45522f94cb42780f69";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+
+
+    $(function(){
+            });
+    </script>
+
+</head>
+<body>
+<a id="catmenu_btn" href="#catmenu"><span><img src="img/catmenu.png" /></span></a>
+<nav id="catmenu">
+    <ul>
+        <li><a href="/">首页</a></li>
+        <li><span>产品分类</span>
+            <ul>
+                                <li><a href="?_suXCA=index/index&cid=5">居家生活</a></li>
+                                <li><a href="?_suXCA=index/index&cid=6">食品饮料</a></li>
+                                <li><a href="?_suXCA=index/index&cid=11">母婴用品</a></li>
+                                <li><a href="?_suXCA=index/index&cid=12">儿童玩具</a></li>
+                                <li><a href="?_suXCA=index/index&cid=13">文具/体育</a></li>
+                                <li><a href="?_suXCA=index/index&cid=18">虚拟物品</a></li>
+                                <li><a href="?_suXCA=index/index&cid=19">3C数码</a></li>
+                                <li><a href="?_suXCA=index/index&cid=20">成人用品</a></li>
+                            </ul>
+        </li>
+        <li><a href="/?_suXCA=index/query">订单查询</a></li>
+        <li><a href="/?_suXCA=user/index">会员中心</a></li>
+        <li><span>关于我们</span>
+            <ul>
+                <li><a href="/?_suXCA=index/about">平台说明</a></li>
+                <li><a href="/?_suXCA=index/feedback">咨询反馈</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+    <div class="wx_share_img"><img src="img/share_img.jpg" /></div>
+
+    <div class="demos-header" style="background:url('img/tbg.png') #eee center center;background-size: cover;">
+      <h1 class="demos-title" style="color:#fff;text-shadow: 2px 1px 2px #333;">惠生活超市</h1>
+    </div>
+
+    <div class="weui-panel weui-panel_access" style="margin-top: 0px;">
+      <div class="weui-panel__bd">
+        	
+        	{loop  $coursedata  $row}
+                <a href="{php echo $this->createMobileUrl('detail');}&sid={$row['id']}" class="weui-media-box weui-media-box_appmsg">
+          <div class="weui-media-box__hd">
+            <img class="weui-media-box__thumb" src="{php echo MODULE_URL;}template/mobile/img/201707260011521115.jpg">
+          </div>
+          <div class="weui-media-box__bd">
+            <h4 class="weui-media-box__title">{$row['title']}</h4>
+            <p class="weui-media-box__desc">自制碳酸水饮料汽水机 配一个气瓶和二个水瓶。1个气瓶可以打40-50升水</p>
+            <p class="weui-media-box__desc price_desc">【仅需{$row['price']}元】</p>
+          </div>
+        </a>
+                {/loop}
+		
+              </div>
+              <div class="weui-loadmore">
+          <i class="weui-loading"></i>
+          <span class="weui-loadmore__tips">正在加载</span>
+        </div>
+        </div>
+    <script>
+        var p=2;
+        var loading = false;  //状态标记
+        $(document.body).infinite().on("infinite", function() {
+          if(loading) return;
+          loading = true;
+            $.getJSON("?_suXCA=index/index_more&p="+p,function(result){
+                loading = false;
+                $('.weui-panel__bd').append(result.data);
+                p++;
+                if(result.nextpage==0){
+                    $(document.body).destroyInfinite();
+                    $('.weui-loadmore').remove();
+                }
+              });
+        });
+    </script>
+
+</body>
+</html>

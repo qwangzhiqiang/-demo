@@ -1,0 +1,33 @@
+{template 'common/header'}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            课程管理
+        </h3>
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered">
+          <caption><a href="{php echo $this->createWebUrl('Addcourse');}">添加课程</a></caption>
+  <thead>
+    <tr>
+      <th>课程名称</th>
+      
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    {loop $coursedata $row}
+    <tr>
+      <td>{$row['title']}</td>
+   
+      <td><a href="{php echo $this->createWebUrl('course');}&action=del&id={$row['id']}"  class="btn btn-danger">删除</a> <a href="{php echo $this->createWebUrl('updatecourse');}&id={$row['id']}" class="btn btn-info">修改</a></td>
+    </tr>
+   {/loop}
+  </tbody>
+</table>
+      
+      {$pager}
+    </div>
+</div>
+{template 'common/footer'}
